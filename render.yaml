@@ -1,7 +1,7 @@
 services:
   - type: web
     name: policylens-ai-backend
-    runtime: python312
+    runtime: python
     plan: starter
     branch: main
     rootDir: ./
