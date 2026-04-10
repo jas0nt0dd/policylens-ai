@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --body-bg: #f8fafc;
+  --body-fg: #0f172a;
+}
+
+html.dark {
+  color-scheme: dark;
+  --body-bg: #020617;
+  --body-fg: #ffffff;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--body-bg);
+  color: var(--body-fg);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.bias-bar { transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+.pulse-ring::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: pulse-ring 1.5s infinite;
+}

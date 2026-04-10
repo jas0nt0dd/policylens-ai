@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+*.db
+*.sqlite
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Environment
+.env
+*.env.local
+
+# AI Models (large files — download separately)
+ai_models/sentence_transformers/
+ai_models/bias_detection/
+ai_models/sdg_classifier/
+
+# Uploads
+/tmp/policylens_uploads/
+
+# Docker
+docker/data/
+
+# OS
+.DS_Store
+Thumbs.db

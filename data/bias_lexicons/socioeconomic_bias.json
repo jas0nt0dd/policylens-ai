@@ -1,0 +1,12 @@
+{
+  "description": "Terms indicating socioeconomic exclusion in policy language",
+  "exclusionary_terms": [
+    "property owner only", "land owner", "taxpayer benefit",
+    "annual income above", "minimum credit score", "registered voter only",
+    "permanent address required", "formal employment only"
+  ],
+  "inclusive_alternatives": [
+    "all residents", "all citizens", "income-agnostic",
+    "universal entitlement", "irrespective of income"
+  ]
+}

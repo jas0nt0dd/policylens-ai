@@ -1,0 +1,17 @@
+{
+  "description": "Gendered terms that indicate potential gender bias in policy language",
+  "terms": [
+    "workman", "workmen", "manpower", "mankind", "chairman", "policeman",
+    "fireman", "stewardess", "housewife", "manmade", "manhole",
+    "brotherhood", "forefathers", "sportsmanship", "craftsmanship",
+    "he/his/him (when used as default pronoun)", "lady doctor", "male nurse"
+  ],
+  "recommended_replacements": {
+    "workman": "worker",
+    "manpower": "workforce",
+    "chairman": "chairperson",
+    "fireman": "firefighter",
+    "mankind": "humanity",
+    "stewardess": "flight attendant"
+  }
+}

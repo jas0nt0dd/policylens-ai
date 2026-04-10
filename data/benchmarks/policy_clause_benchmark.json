@@ -1,0 +1,82 @@
+[
+  {
+    "id": "case_01",
+    "text": "Every workman shall be entitled to the rights set forth herein.",
+    "should_flag": true,
+    "expected_bias_type": "GENDER_BIAS",
+    "expected_min_level": "MODERATE",
+    "expected_impacted_groups": ["women workers"]
+  },
+  {
+    "id": "case_02",
+    "text": "Benefits under this scheme shall be available only to permanent employees earning above Rs. 15,000 per month. Contract workers and gig economy workers are excluded.",
+    "should_flag": true,
+    "expected_bias_type": "SOCIOECONOMIC_BIAS",
+    "expected_min_level": "HIGH",
+    "expected_impacted_groups": ["contract workers", "gig workers"]
+  },
+  {
+    "id": "case_03",
+    "text": "Urban employees working in tier-1 cities shall receive enhanced medical benefits. Employees in rural areas shall receive basic benefits only.",
+    "should_flag": true,
+    "expected_bias_type": "REGIONAL_BIAS",
+    "expected_min_level": "HIGH",
+    "expected_impacted_groups": ["rural workers"]
+  },
+  {
+    "id": "case_04",
+    "text": "Workers who cannot complete the service requirement due to disability or illness shall not be eligible unless specifically approved by the designated authority.",
+    "should_flag": true,
+    "expected_bias_type": "DISABILITY_HEALTH_BIAS",
+    "expected_min_level": "HIGH",
+    "expected_impacted_groups": ["workers with disabilities"]
+  },
+  {
+    "id": "case_05",
+    "text": "The government may, at its discretion, extend or restrict the application of this Act to any class of workers as may be deemed necessary.",
+    "should_flag": true,
+    "expected_bias_type": "PROCEDURAL_FAIRNESS_BIAS",
+    "expected_min_level": "MODERATE",
+    "expected_impacted_groups": ["all affected workers"]
+  },
+  {
+    "id": "case_06",
+    "text": "The worker shall have no further right of appeal and the decision shall be final and binding.",
+    "should_flag": true,
+    "expected_bias_type": "PROCEDURAL_FAIRNESS_BIAS",
+    "expected_min_level": "MODERATE",
+    "expected_impacted_groups": ["workers denied benefits"]
+  },
+  {
+    "id": "case_07",
+    "text": "Parental leave shall be available on equal terms to all eligible workers regardless of gender or marital status.",
+    "should_flag": false,
+    "expected_bias_type": "GENERAL_BIAS",
+    "expected_min_level": "LOW",
+    "expected_impacted_groups": []
+  },
+  {
+    "id": "case_08",
+    "text": "Workers in rural and urban areas shall receive the same baseline health protection, subject to transparent evidence-based top-ups.",
+    "should_flag": false,
+    "expected_bias_type": "GENERAL_BIAS",
+    "expected_min_level": "LOW",
+    "expected_impacted_groups": []
+  },
+  {
+    "id": "case_09",
+    "text": "The authority shall publish written eligibility criteria, provide reasons for every decision, and allow independent review.",
+    "should_flag": false,
+    "expected_bias_type": "GENERAL_BIAS",
+    "expected_min_level": "LOW",
+    "expected_impacted_groups": []
+  },
+  {
+    "id": "case_10",
+    "text": "Benefits shall be available to permanent, contract, and gig workers using objective need-based criteria.",
+    "should_flag": false,
+    "expected_bias_type": "GENERAL_BIAS",
+    "expected_min_level": "LOW",
+    "expected_impacted_groups": []
+  }
+]

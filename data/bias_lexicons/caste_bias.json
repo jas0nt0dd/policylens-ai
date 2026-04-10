@@ -1,0 +1,12 @@
+{
+  "description": "Terms indicating potential caste, ethnic, or community bias in Indian policy documents",
+  "high_risk_terms": [
+    "upper caste", "lower caste", "untouchable", "depressed class",
+    "backward", "primitive tribe", "scheduled caste only", "forward community"
+  ],
+  "context_sensitive_terms": [
+    "SC/ST", "OBC", "EWS", "general category", "minority community",
+    "scheduled tribe", "adivasi", "dalit"
+  ],
+  "note": "Context-sensitive terms are not biased by themselves but require equitable treatment in provisions."
+}
