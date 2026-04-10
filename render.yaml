@@ -1,7 +1,7 @@
 services:
   - type: web
     name: policylens-ai-backend
-    env: python
+    runtime: python
     plan: starter
     branch: main
     rootDir: ./
@@ -13,6 +13,6 @@ services:
       - key: GROQ_API_KEY
         value: ""
       - key: OLLAMA_BASE_URL
-        value: http://localhost:11434
+        value: ""
       - key: LIBRETRANSLATE_URL
-        value: http://localhost:5000
+        value: ""
