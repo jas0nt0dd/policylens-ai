@@ -172,6 +172,36 @@ def _analyze_clause_bias(text: str, clause_id: str, sentence_index: int | None =
         why_parts.append(rule["why"])
         total_weight += rule["weight"]
 
+    # ADD — explicit percentage-based discrimination
+    pay_gap_patterns = [
+        "wage adjustment", "15% lower", "lower than male", "productivity considerations",
+        "consent from husband", "consent from father", "letter of consent",
+        "reduced maternity", "4 weeks without pay",
+    ]
+    for term in pay_gap_patterns:
+        if term.lower() in text_lower:
+            total_weight += 35
+            if not matched_rules or matched_rules[0].get("bias_type") != "GENDER_BIAS":
+                rule_matches.append(f"Explicit gender discrimination: '{term}' found")
+                why_parts.append(f"Explicit gender discrimination: '{term}' found")
+
+    # ADD — disability discrimination
+    disability_patterns = ["50% of the standard rate", "degree of disability", 
+                            "persons with disabilities shall", "disability shall receive pension at"]
+    for term in disability_patterns:
+        if term.lower() in text_lower:
+            total_weight += 30
+            if not matched_rules or matched_rules[0].get("bias_type") != "DISABILITY_HEALTH_BIAS":
+                rule_matches.append(f"Disability discrimination: '{term}' found")
+                why_parts.append(f"Disability discrimination: '{term}' found")
+
+    # ADD — child labour
+    if "children above the age of 12" in text_lower or "employment of children" in text_lower:
+        total_weight += 50
+        if not matched_rules or matched_rules[0].get("bias_type") != "AGE_BIAS":
+            rule_matches.append("Child labour provision detected")
+            why_parts.append("Child labour provision detected")
+
     loophole_risk = _detect_loophole(text)
     if loophole_risk == "HIGH":
         total_weight += 14
@@ -242,21 +272,14 @@ def _find_rule_matches(patterns: List[str], text_lower: str) -> List[str]:
 
 
 def _compute_overall_score(flagged: List[Dict[str, Any]], total_clauses: int, total_score: int) -> int:
-    if not flagged:
-        return int(total_score / max(total_clauses, 1))
-
-    flagged_scores = [clause["bias_score"] for clause in flagged]
-    flagged_avg = sum(flagged_scores) / len(flagged_scores)
-    top_score = max(flagged_scores)
-    flag_ratio = len(flagged) / max(total_clauses, 1)
-    strong_findings = sum(1 for clause in flagged if clause.get("confidence_score", 0) >= 85)
-
-    overall = int(round(flagged_avg * 0.55 + top_score * 0.25 + flag_ratio * 25 + strong_findings * 2))
-    if strong_findings >= 2 and overall < 60:
-        overall = 60
-    if top_score >= 80 and overall < 50:
-        overall = 50
-    return min(overall, 100)
+    if flagged:
+        top_scores = sorted([f["bias_score"] for f in flagged], reverse=True)[:20]
+        flagged_avg = int(sum(top_scores) / len(top_scores))
+        all_avg = int(total_score / max(total_clauses, 1))
+        overall = int(flagged_avg * 0.7 + all_avg * 0.3)  # weight toward worst clauses
+    else:
+        overall = int(total_score / max(total_clauses, 1))
+    return overall
 
 
 def _compute_confidence_score(matched_rules: List[Dict[str, Any]], loophole_risk: str, hf_score: float | None) -> int:
